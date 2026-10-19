@@ -1,0 +1,3 @@
+C:/projects/find way maze backtrack/build/CMakeFiles/SFML_Project.dir
+C:/projects/find way maze backtrack/build/CMakeFiles/edit_cache.dir
+C:/projects/find way maze backtrack/build/CMakeFiles/rebuild_cache.dir

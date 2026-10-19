@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.16)
+project(SFML_Project)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SFML_DIR "C:/projects/libs/SFML-3.1.0/lib/cmake/SFML" CACHE PATH "Path to SFML CMake config")
+
+find_package(SFML 3.1 REQUIRED COMPONENTS Graphics Window System)
+
+add_executable(${PROJECT_NAME} src/main.cpp src/Maze.cpp src/PathFinder.cpp)
+
+target_link_libraries(${PROJECT_NAME} 
+    SFML::Graphics
+    SFML::Window
+    SFML::System
+)
+
+if(WIN32)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(SFML_DLL_SUFFIX "-d-3")
+    else()
+        set(SFML_DLL_SUFFIX "-3")
+    endif()
+
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "C:/projects/libs/SFML-3.1.0/bin/sfml-graphics${SFML_DLL_SUFFIX}.dll"
+            "C:/projects/libs/SFML-3.1.0/bin/sfml-window${SFML_DLL_SUFFIX}.dll"
+            "C:/projects/libs/SFML-3.1.0/bin/sfml-system${SFML_DLL_SUFFIX}.dll"
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    )
+endif()
+
+
+
+cd "C:\projects\find way maze backtrack"
+Remove-Item -Recurse -Force build
+mkdir build
+cd build
+cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
+cmake --build . --config Release
