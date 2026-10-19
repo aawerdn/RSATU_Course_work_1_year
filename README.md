@@ -19,3 +19,14 @@ A first-year university coursework project (RSATU). A C++ application built with
 - **Third-party libraries**: SFML only (Graphics, Window, System)
 
 ## 📁 Project Structure
+.
+├── CMakeLists.txt # Main build configuration
+├── CMakeLists_.txt # Backup config (safe to delete)
+├── LiberationSans-Regular.ttf # Font used by the UI
+├── libs/
+│ └── SFML-3.1.0/ # Local copy of SFML
+├── src/
+│ ├── main.cpp # Entry point, game loop, input handling
+│ ├── Maze.cpp / .h # Maze logic (grid, walls, start/finish)
+│ └── PathFinder.cpp / .h # Pathfinding algorithm
+└── build/ # Build directory (generated)
